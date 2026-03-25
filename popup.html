@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Entra Favorieten</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="header">
+    <div class="header-top">
+      <h1>Entra Favorieten</h1>
+      <div class="header-actions">
+        <button id="import-btn" class="icon-btn" title="Importeer JSON">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+          </svg>
+        </button>
+        <button id="export-btn" class="icon-btn" title="Exporteer JSON">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5-5 5 5M12 5v12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Zoek favorieten..." autocomplete="off">
+    </div>
+
+    <button id="add-btn" class="btn primary-btn">+ Huidige Pagina Toevoegen</button>
+  </div>
+  
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="applications">Applicaties</button>
+    <button class="tab-btn" data-tab="groups">Groepen</button>
+    <button class="tab-btn" data-tab="users">Gebruikers</button>
+  </div>
+
+  <div class="tab-content">
+    <div id="applications" class="tab-pane active">
+      <ul class="favorites-list" id="list-applications"></ul>
+      <div class="empty-state" id="empty-applications">Geen applicaties gevonden.</div>
+    </div>
+    <div id="groups" class="tab-pane">
+      <ul class="favorites-list" id="list-groups"></ul>
+      <div class="empty-state" id="empty-groups">Geen groepen gevonden.</div>
+    </div>
+    <div id="users" class="tab-pane">
+      <ul class="favorites-list" id="list-users"></ul>
+      <div class="empty-state" id="empty-users">Geen gebruikers gevonden.</div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Opgeslagen!</div>
+
+  <!-- Edit Name Modal -->
+  <div id="edit-modal" class="modal hidden">
+    <div class="modal-content">
+      <p style="margin-top:0; font-weight:600;">Favoriet bewerken</p>
+      <input type="text" id="edit-name-input" class="modal-input" placeholder="Naam">
+      <div class="modal-actions">
+        <button id="cancel-edit-btn" class="btn secondary-btn">Annuleren</button>
+        <button id="save-edit-btn" class="btn primary-btn">Opslaan</button>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="file-input" accept=".json" style="display: none;">
+
+  <script src="popup.js"></script>
+</body>
+</html>

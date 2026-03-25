@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Entra Favorieten",
+  "version": "1.0",
+  "description": "Markeer Microsoft Entra Applicaties, Groepen en Gebruikers als favoriet.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://entra.microsoft.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://entra.microsoft.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "add-favorite": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "Huidige Entra pagina toevoegen aan favorieten"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Entra Favorieten",
+    "default_icon": "icons/icon48.png"
+  }
+}
