@@ -12,12 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const lists = {
     applications: document.getElementById('list-applications'),
     groups: document.getElementById('list-groups'),
-    users: document.getElementById('list-users')
+    users: document.getElementById('list-users'),
+    intune: document.getElementById('list-intune')
   };
   const emptyStates = {
     applications: document.getElementById('empty-applications'),
     groups: document.getElementById('empty-groups'),
-    users: document.getElementById('empty-users')
+    users: document.getElementById('empty-users'),
+    intune: document.getElementById('empty-intune')
   };
 
   // State
@@ -214,15 +216,20 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (typeof chrome !== 'undefined' && chrome.tabs) {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        if (!tab || !tab.url || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
-          showToast('Not on a valid Entra/Azure page!');
+        const isEntra = tab && tab.url && (tab.url.includes('entra.microsoft.com') || tab.url.includes('portal.azure.com') || tab.url.includes('aad.portal.azure.com'));
+        const isIntune = tab && tab.url && (tab.url.includes('intune.microsoft.com') || tab.url.includes('endpoint.microsoft.com'));
+        
+        if (!isEntra && !isIntune) {
+          showToast('Not on a valid Entra/Intune page!');
           return;
         }
 
-        const cleanTitle = (tab.title || 'Unknown').replace(' - Microsoft Azure', '').replace(' - Microsoft Entra admin center', '').trim();
+        const cleanTitle = (tab.title || 'Unknown').replace(' - Microsoft Azure', '').replace(' - Microsoft Entra admin center', '').replace(' - Microsoft Intune admin center', '').trim();
         
         let type = 'applications';
-        if (tab.url.includes('Group') || tab.url.includes('GroupsManagementMenuBlade')) {
+        if (isIntune) {
+          type = 'intune';
+        } else if (tab.url.includes('Group') || tab.url.includes('GroupsManagementMenuBlade')) {
           type = 'groups';
         } else if (tab.url.includes('User') || tab.url.includes('UserManagementMenuBlade') || tab.url.includes('UsersAndTenants')) {
           type = 'users';
@@ -280,7 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const grouped = {
       applications: filtered.filter(f => f.type === 'applications'),
       groups: filtered.filter(f => f.type === 'groups'),
-      users: filtered.filter(f => f.type === 'users')
+      users: filtered.filter(f => f.type === 'users'),
+      intune: filtered.filter(f => f.type === 'intune')
     };
 
     Object.keys(grouped).forEach(type => {
@@ -385,9 +393,12 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (typeof chrome !== 'undefined' && chrome.tabs) {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        if (!tab || !tab.url || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
+        const isEntra = tab && tab.url && (tab.url.includes('entra.microsoft.com') || tab.url.includes('portal.azure.com') || tab.url.includes('aad.portal.azure.com'));
+        const isIntune = tab && tab.url && (tab.url.includes('intune.microsoft.com') || tab.url.includes('endpoint.microsoft.com'));
+        
+        if (!isEntra && !isIntune) {
           addBtn.disabled = true;
-          addBtn.innerText = 'Navigate to Entra';
+          addBtn.innerText = 'Navigate to Entra / Intune';
           addBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();

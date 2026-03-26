@@ -3,21 +3,26 @@ chrome.commands.onCommand.addListener((command) => {
   if (command === 'add-favorite') {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const tab = tabs[0];
-      if (!tab || !tab.url || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
+      const isEntra = tab && tab.url && (tab.url.includes('entra.microsoft.com') || tab.url.includes('portal.azure.com') || tab.url.includes('aad.portal.azure.com'));
+      const isIntune = tab && tab.url && (tab.url.includes('intune.microsoft.com') || tab.url.includes('endpoint.microsoft.com'));
+      
+      if (!isEntra && !isIntune) {
         chrome.notifications.create({
           type: 'basic',
           iconUrl: 'icons/icon48.png',
-          title: 'Entra Favorites',
-          message: 'Not a valid Entra or Azure portal page!'
+          title: 'Favorites',
+          message: 'Not a valid Entra or Intune portal page!'
         });
         return;
       }
 
       const rawTitle = tab.title || 'Unknown';
-      const cleanTitle = rawTitle.replace(' - Microsoft Azure', '').replace(' - Microsoft Entra admin center', '').trim();
+      const cleanTitle = rawTitle.replace(' - Microsoft Azure', '').replace(' - Microsoft Entra admin center', '').replace(' - Microsoft Intune admin center', '').trim();
       
       let type = 'applications';
-      if (tab.url.includes('Group') || tab.url.includes('GroupsManagementMenuBlade')) {
+      if (isIntune) {
+        type = 'intune';
+      } else if (tab.url.includes('Group') || tab.url.includes('GroupsManagementMenuBlade')) {
         type = 'groups';
       } else if (tab.url.includes('User') || tab.url.includes('UserManagementMenuBlade') || tab.url.includes('UsersAndTenants')) {
         type = 'users';

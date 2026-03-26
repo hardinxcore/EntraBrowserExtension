@@ -10,7 +10,9 @@
     "notifications"
   ],
   "host_permissions": [
-    "https://entra.microsoft.com/*"
+    "https://entra.microsoft.com/*",
+    "https://intune.microsoft.com/*",
+    "https://endpoint.microsoft.com/*"
   ],
   "content_scripts": [
     {
@@ -19,7 +21,9 @@
         "*://entra.microsoft.com/*",
         "*://portal.azure.com/*",
         "*://aad.portal.azure.com/*",
-        "*://admin.microsoft.com/*"
+        "*://admin.microsoft.com/*",
+        "*://intune.microsoft.com/*",
+        "*://endpoint.microsoft.com/*"
       ],
       "js": ["content.js"],
       "run_at": "document_end"

@@ -1,15 +1,15 @@
-# Entra Favorites & Sorter - Browser Extension
+# Entra & Intune Favorites Sorter - Browser Extension
 
-A power user browser extension designed for Microsoft Entra (Azure AD) and Microsoft 365 administrators. This extension boosts your productivity by allowing you to quickly bookmark, navigate, and sort resources in the Entra admin center.
+A power user browser extension designed for Microsoft Entra (Azure AD), Microsoft Intune, and Microsoft 365 administrators. This extension boosts your productivity by allowing you to quickly bookmark, navigate, and sort resources in the Entra and Intune admin centers.
 
 ![Entra Favorites](https://raw.githubusercontent.com/username/entra-favorites/main/images/screenshot.png) *(Add a screenshot here)*
 
 ## 🚀 Features
 
-*   **Quick Bookmarks:** Add any Microsoft Entra Application, User, or Group to your favorites with a single click.
+*   **Quick Bookmarks:** Add any Microsoft Entra Application, User, Group, or Intune Device / Policy to your favorites with a single click.
 *   **Omnibox Integration:** Type `entra` in your Chrome address bar, hit `Tab`, and search your favorites directly from the browser!
 *   **Global Tenant Switcher:** Managing multiple CSP environments? Enter a Tenant ID in the extension to automatically append it (`?tenantId=...`) to all your favorite links.
-*   **Auto-Sort Navigation:** Hate the messy left-hand navigation blades in Azure/Entra? The extension automatically sorts all menus alphabetically (while keeping "Overview" at the top). Includes an easy on/off toggle.
+*   **Auto-Sort Navigation:** Hate the messy left-hand navigation blades in Azure/Entra/Intune? The extension automatically sorts all menus alphabetically (while keeping "Overview" at the top). Includes an easy on/off toggle.
 *   **Copy Object IDs:** Instantly copy the exact Application ID or Object ID straight from the extension popup with one click (`📋`).
 *   **Color Tags:** Assign colors to your favorites (e.g. Red for Production, Green for Test) to keep your lists organized.
 *   **Export & Import:** Backup your favorites to JSON or share them with new colleagues so they don't have to navigate from scratch.
@@ -35,7 +35,7 @@ Currently, this extension is not available in the Chrome Web Store. You can inst
 *   `storage`: Required to save your favorites, settings, and Tenant ID configurations.
 *   `scripting`: Required to inject the automatic alphabet-sorting scripts into the Entra SPA.
 *   `notifications`: Used to provide non-intrusive feedback when saving a favorite via keyboard shortcuts.
-*   *Host Permissions*: `*://entra.microsoft.com/*`, `*://portal.azure.com/*`, `*://reactblade.portal.azure.net/*` to ensure the sidebar sorting works locally and within Microsoft's complex IFrames.
+*   *Host Permissions*: `*://entra.microsoft.com/*`, `*://intune.microsoft.com/*`, `*://endpoint.microsoft.com/*`, `*://portal.azure.com/*`, `*://reactblade.portal.azure.net/*` to ensure the sidebar sorting works locally and within Microsoft's complex IFrames.
 
 ## ⌨️ Shortcuts
 
