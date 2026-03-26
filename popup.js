@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (typeof chrome !== 'undefined' && chrome.tabs) {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        if (!tab || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
+        if (!tab || !tab.url || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
           showToast('Not on a valid Entra/Azure page!');
           return;
         }
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (typeof chrome !== 'undefined' && chrome.tabs) {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        if (!tab || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
+        if (!tab || !tab.url || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
           addBtn.disabled = true;
           addBtn.innerText = 'Navigate to Entra';
           addBtn.addEventListener('click', (e) => {

@@ -3,7 +3,7 @@ chrome.commands.onCommand.addListener((command) => {
   if (command === 'add-favorite') {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const tab = tabs[0];
-      if (!tab || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
+      if (!tab || !tab.url || (!tab.url.includes('entra.microsoft.com') && !tab.url.includes('portal.azure.com'))) {
         chrome.notifications.create({
           type: 'basic',
           iconUrl: 'icons/icon48.png',
