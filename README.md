@@ -2,7 +2,7 @@
 
 A power user browser extension designed for Microsoft Entra (Azure AD), Microsoft Intune, and Microsoft 365 administrators. This extension boosts your productivity by allowing you to quickly bookmark, navigate, and sort resources in the Entra and Intune admin centers.
 
-![Entra Favorites](https://raw.githubusercontent.com/username/entra-favorites/main/images/screenshot.png) *(Add a screenshot here)*
+![Entra Favorites](https://raw.githubusercontent.com/hardinxcore/EntraBrowserExtension/main/images/screenshot.png) *(Add a screenshot here)*
 
 ## 🚀 Features & Usage Guide
 
@@ -43,7 +43,7 @@ Currently, this extension is not available in the Chrome Web Store. You can inst
 
 1. Clone or download this repository to your local machine:
    ```bash
-   git clone https://github.com/yourusername/entra-favorites-extension.git
+   git clone https://github.com/hardinxcore/EntraBrowserExtension.git
    ```
 2. Open Google Chrome and navigate to `chrome://extensions/`.
 3. Enable **Developer mode** using the toggle in the top right corner.

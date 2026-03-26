@@ -9,7 +9,7 @@ chrome.commands.onCommand.addListener((command) => {
       if (!isEntra && !isIntune) {
         chrome.notifications.create({
           type: 'basic',
-          iconUrl: 'icons/icon48.png',
+          iconUrl: '/icons/icon48.png',
           title: 'Favorites',
           message: 'Not a valid Entra or Intune portal page!'
         });
@@ -45,7 +45,7 @@ chrome.commands.onCommand.addListener((command) => {
         chrome.storage.sync.set({ entraFavorites: favorites }, () => {
           chrome.notifications.create({
             type: 'basic',
-            iconUrl: 'icons/icon48.png',
+            iconUrl: '/icons/icon48.png',
             title: 'Entra Favorites',
             message: `"${cleanTitle}" added to favorites!`
           });
