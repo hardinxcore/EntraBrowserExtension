@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Entra Favorieten",
-  "version": "1.0",
-  "description": "Markeer Microsoft Entra Applicaties, Groepen en Gebruikers als favoriet.",
+  "name": "Entra Favorites & Sorter",
+  "version": "1.1.0",
+  "description": "Bookmark Microsoft Entra Apps, Groups, and Users. Automatically sort Entra left menus alphabetically.",
   "permissions": [
     "activeTab",
     "storage",
@@ -14,12 +14,28 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://entra.microsoft.com/*"],
-      "js": ["content.js"]
+      "all_frames": true,
+      "matches": [
+        "*://entra.microsoft.com/*",
+        "*://portal.azure.com/*",
+        "*://aad.portal.azure.com/*",
+        "*://admin.microsoft.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    },
+    {
+      "all_frames": true,
+      "matches": ["*://*.reactblade.portal.azure.net/*"],
+      "js": ["iframe-content-v2.js"],
+      "run_at": "document_end"
     }
   ],
   "background": {
     "service_worker": "background.js"
+  },
+  "omnibox": {
+    "keyword": "entra"
   },
   "commands": {
     "add-favorite": {
@@ -27,7 +43,7 @@
         "default": "Ctrl+Shift+E",
         "mac": "Command+Shift+E"
       },
-      "description": "Huidige Entra pagina toevoegen aan favorieten"
+      "description": "Add current Entra page to favorites"
     }
   },
   "icons": {
@@ -37,7 +53,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Entra Favorieten",
+    "default_title": "Entra Favorites",
     "default_icon": "icons/icon48.png"
   }
 }
