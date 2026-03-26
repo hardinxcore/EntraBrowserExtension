@@ -4,17 +4,38 @@ A power user browser extension designed for Microsoft Entra (Azure AD), Microsof
 
 ![Entra Favorites](https://raw.githubusercontent.com/username/entra-favorites/main/images/screenshot.png) *(Add a screenshot here)*
 
-## 🚀 Features
+## 🚀 Features & Usage Guide
 
-*   **Quick Bookmarks:** Add any Microsoft Entra Application, User, Group, or Intune Device / Policy to your favorites with a single click.
-*   **Omnibox Integration:** Type `entra` in your Chrome address bar, hit `Tab`, and search your favorites directly from the browser!
-*   **Global Tenant Switcher:** Managing multiple CSP environments? Enter a Tenant ID in the extension to automatically append it (`?tenantId=...`) to all your favorite links.
-*   **Auto-Sort Navigation:** Hate the messy left-hand navigation blades in Azure/Entra/Intune? The extension automatically sorts all menus alphabetically (while keeping "Overview" at the top). Includes an easy on/off toggle.
-*   **Copy Object IDs:** Instantly copy the exact Application ID or Object ID straight from the extension popup with one click (`📋`).
-*   **Color Tags:** Assign colors to your favorites (e.g. Red for Production, Green for Test) to keep your lists organized.
-*   **Export & Import:** Backup your favorites to JSON or share them with new colleagues so they don't have to navigate from scratch.
-*   **Keyboard Shortcuts:** Press `Ctrl+Shift+E` (or `Cmd+Shift+E`) on any Entra page to save it instantly.
-*   **Quick Links:** Handy shortcuts at the bottom of the popup to Azure Cloud Shell, Graph Explorer, and Microsoft 365 Admin Center.
+1.  **Quick Bookmarks & Keyboard Shortcuts**
+    *   **Action:** Press `Ctrl+Shift+E` (Windows) or `Cmd+Shift+E` (Mac) while visiting any valid Entra, Intune, or Azure page.
+    *   **Result:** Instantly saves your current page as a favorite (Application, User, Group, or Intune policy) and triggers a background notification. No clicking required!
+
+2.  **Omnibox Integration (Address Bar Search)**
+    *   **Action:** Click your Chrome address bar (or press `Ctrl+L`). Type `entra` and hit `Tab`. Then type part of a favorite's name.
+    *   **Result:** You can instantly search your favorites without opening the popup and hit `Enter` to navigate directly.
+
+3.  **Global Tenant Switcher**
+    *   **Action:** In the extension popup, enter a Tenant ID in the input field at the top.
+    *   **Result:** Managing multiple CSP environments? Every favorite you click will automatically have `?tenantId=...` appended to it, routing you directly to the correct customer environment.
+
+4.  **Auto-Sort Navigation (Integrated EntraSort)**
+    *   **Action:** Open the extension and ensure the **Auto-sort Menus** toggle is switched on.
+    *   **Result:** The messy left-hand navigation blades in Azure/Entra/Intune are automatically sorted alphabetically (while keeping "Overview" fixed at the top). It effortlessly works even inside Microsoft's complex IFrames!
+
+5.  **Copy Object IDs**
+    *   **Action:** If you added a User, Group, or App, hover over the item in the list.
+    *   **Result:** You will see a `📋` (copy) icon next to the edit and delete buttons. Clicking it instantly extracts and copies the GUID from the URL to your clipboard.
+
+6.  **Color Tags**
+    *   **Action:** Click the `Edit` (pencil) icon on an existing favorite.
+    *   **Result:** The modal allows you to pick a color background for that item, letting you visually differentiate environments (e.g., Red for Prod, Green for Test).
+
+7.  **Export & Import**
+    *   **Action:** Click the top-right transfer icons to download your favorites as a `.json` file, or upload an existing file.
+    *   **Result:** Easily backup your favorites or share them with new colleagues so they don't have to build a navigation list from scratch.
+
+8.  **Quick Links**
+    *   At the bottom of the popup, there are 3 rapid links to Azure Cloud Shell, Graph Explorer, and the Microsoft 365 Admin Center.
 
 ## 🛠️ Installation
 
